@@ -13,13 +13,13 @@ function play(connection, message){
         }*/
     });
 }
-class JoinCommand extends commando.Command{
+class SongCommand extends commando.Command{
     constructor(client){
         super(client,{
-            name: 'join',
+            name: 'song',
             group: 'music',
-            memberName: 'join',
-            description: 'Pepsi woman se mete al voice chat'
+            memberName: 'song',
+            description: 'Pepsi woman mete la cancion'
         });
     }
 
@@ -32,14 +32,12 @@ class JoinCommand extends commando.Command{
 
                     servers[message.guild.id] = {queue: []}
                 }
-                message.member.voiceChannel.join()
-                    .then(connection =>{
-                        const server = servers[message.guild.id];
-                        message.channel.send('Ahi esta su cancion');
-                        server.queue.push(args);
-                        play(connection, message);
-                        message.channel.send('Me uni putos');
-                })
+                const server = servers[message.guild.id];
+                server.queue.push(args)
+                .then(connection=>{
+                    message.channel.send('Ahi esta su cancion');
+                    play(connection, message);
+                });
 
             }
         }
@@ -48,4 +46,4 @@ class JoinCommand extends commando.Command{
         }
     }
 }
-module.exports = JoinCommand;
+module.exports = SongCommand;

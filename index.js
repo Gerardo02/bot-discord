@@ -2,12 +2,13 @@ const Commando = require('discord.js-commando');
 const client = new Commando.Client({
     owner: '625574950710935562'
 });
-const token = 'NjI1NTc0OTUwNzEwOTM1NTYy.XYrbuQ.-7zytkw9UutCc3EpbWUSqqFX4E8';
+const token = 'NjI1NTc0OTUwNzEwOTM1NTYy.XYr5rw.OigPgS8KOVmrHEN2eT73neL4ucc';
 
 const path = require('path');
 
 client.registry.registerGroups([
-        ['music', 'Music']
+        ['join', 'Bot joins'],
+        ['music','Music']
     ]).registerDefaults().registerCommandsIn(path.join(__dirname, 'commands'));
 
 global.currentTeamMembers = [];
